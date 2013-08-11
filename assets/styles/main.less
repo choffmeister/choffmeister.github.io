@@ -20,3 +20,26 @@ a {
 		text-decoration: none;
 	}
 }
+
+.container {
+	width: 750px;
+}
+
+@media (max-width: 770px) {
+	.container {
+		width: auto;
+		max-width: 768px;
+		padding: 0 10px;
+	}
+	#brand {
+		display: none;
+	}
+
+	#logo {
+		left: 10px;
+	}
+
+	#toplinks {
+		right: 10px;
+	}
+}

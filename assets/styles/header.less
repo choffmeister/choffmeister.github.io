@@ -5,16 +5,29 @@
 
 	& > div {
 		position: absolute;
-		bottom: @header-footer-margin;
+		bottom: @header-margin;
 		left: 0;
 		right: 0;
 	}
 }
 
+#logo {
+	background-image: url('https://secure.gravatar.com/avatar/cc746e5a0241b05590bf508d4666cc36?s=128');
+	background-size: 100%;
+	background-repeat: none;
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	bottom: -3px;
+}
+
 #brand {
 	font-size: 32px;
 	position: absolute;
-	left: 0;
+	left: 40px;
 	bottom: -8px;
 
 	& > span {

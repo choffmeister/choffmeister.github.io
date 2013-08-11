@@ -1,0 +1,26 @@
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+@import "../../bower_components/roboto-fontface/roboto-fontface.less";
+@import "./syntax.less";
+
+@robotoFontPath: "../fonts";
+@font-family-sans-serif: "Roboto";
+
+#brand {
+	color: @text-color;
+	font-size: 32px;
+
+	&:active, &:hover, &:visited {
+		color: @text-color;
+		text-decoration: none;
+	}
+
+	& > span {
+		&:first-child {
+			font-weight: 100;
+		}
+
+		&:last-child {
+			font-weight: 700;
+		}
+	}
+}

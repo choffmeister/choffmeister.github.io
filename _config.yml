@@ -1,0 +1,10 @@
+name: Your New Jekyll Site
+markdown: redcarpet
+pygments: true
+exclude: [
+  node_modules,
+  package.json,
+  bower_components,
+  bower.json,
+  *.less
+]

@@ -1,0 +1,14 @@
+# jekyll build target
+_site/
+
+# bower components
+bower_components/
+
+# node modules
+node_modules/
+
+# compiled less
+*.css
+
+# copied roboto font face
+assets/fonts/

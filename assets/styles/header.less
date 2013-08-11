@@ -1,0 +1,46 @@
+#header {
+	border-bottom: @header-footer-border;
+	position: relative;
+	height: @header-height;
+
+	& > div {
+		position: absolute;
+		bottom: @header-footer-margin;
+		left: 0;
+		right: 0;
+	}
+}
+
+#brand {
+	font-size: 32px;
+	position: absolute;
+	left: 0;
+	bottom: -8px;
+
+	& > span {
+		&:first-child {
+			font-weight: 100;
+		}
+
+		&:last-child {
+			font-weight: 500;
+		}
+	}
+}
+
+#toplinks {
+	.pull-right;
+	.clearfix;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	list-style: none;
+
+	& > li {
+		float: left;
+		margin-left: 1em;
+	}
+}

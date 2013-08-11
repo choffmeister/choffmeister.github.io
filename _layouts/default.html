@@ -8,21 +8,27 @@
 		<link rel="stylesheet" href="/assets/styles/main.css"/>
 	</head>
 	<body>
-		<header id="header" class="container">
-			<a id="brand" href="/"><span>christian</span><span>hoffmeister</span></a>
-			<ul id="toplinks">
-				<li><a href="https://github.com/choffmeister" target="_blank">@GitHub</a></li>
-				<li><a href="https://twitter.com/thekwasti" target="_blank">@Twitter</a></li>
-			</ul>
-		</header>
-		<hr/>
-		<section class="container">
-			{{ content }}
-		</section>
-		<hr/>
-		<footer class="container">
-			<div class="pull-left">&copy; 2013 <a href="https://choffmeister.de/">Christian Hoffmeister</a></div>
-			<div class="pull-right">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a></div>
+		<div id="wrap">
+			<header id="header">
+				<div class="container">
+					<a id="brand" href="/"><span>christian</span><span>hoffmeister</span></a>
+					<ul id="toplinks">
+						<li><a href="https://github.com/choffmeister" target="_blank">@GitHub</a></li>
+						<li><a href="https://twitter.com/thekwasti" target="_blank">@Twitter</a></li>
+					</ul>
+				</div>
+			</header>
+			<section id="content">
+				<div class="container">
+					{{ content }}
+				</div>
+			</section>
+		</div>
+		<footer id="footer">
+			<div class="container">
+				<div class="pull-left">&copy; 2013 <a href="https://choffmeister.de/">Christian Hoffmeister</a></div>
+				<div class="pull-right">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a></div>
+			</div>
 		</footer>
 	</body>
 </html>

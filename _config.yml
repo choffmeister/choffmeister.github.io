@@ -1,10 +1,10 @@
 name: Your New Jekyll Site
+author: Christian Hoffmeister
 markdown: redcarpet
 pygments: true
 exclude: [
-  node_modules,
-  package.json,
-  bower_components,
-  bower.json,
-  *.less
+  "bower.json",
+  "Makefile"
 ]
+less:
+  compress: false

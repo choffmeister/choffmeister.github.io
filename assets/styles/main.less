@@ -2,17 +2,27 @@
 @import "../../bower_components/roboto-fontface/roboto-fontface.less";
 @import "./syntax.less";
 
-@robotoFontPath: "../fonts";
+@robotoFontPath: "../../bower_components/roboto-fontface/fonts";
 @font-family-sans-serif: "Roboto";
+@text-color: #575757;
+@link-color: #575757;
+@link-hover-color: #0086b3;
+
+#header {
+	position: relative;
+	height: 70px;
+	.clearfix;
+}
+
+#footer {
+	.clearfix;
+}
 
 #brand {
-	color: @text-color;
 	font-size: 32px;
-
-	&:active, &:hover, &:visited {
-		color: @text-color;
-		text-decoration: none;
-	}
+	position: absolute;
+	left: 0;
+	bottom: -8px;
 
 	& > span {
 		&:first-child {
@@ -20,7 +30,40 @@
 		}
 
 		&:last-child {
-			font-weight: 700;
+			font-weight: 500;
 		}
+	}
+}
+
+#toplinks {
+	.pull-right;
+	.clearfix;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	list-style: none;
+
+	& > li {
+		float: left;
+		margin-left: 1em;
+	}
+}
+
+* {
+	font-weight: 300;
+}
+
+a {
+	@link-color-transition-time: 0.3s;
+	transition: color @link-color-transition-time;
+	-webkit-transition: color @link-color-transition-time;
+	-moz-transition: color @link-color-transition-time;
+	font-weight: 400;
+
+	&:hover, &:active, &:visited {
+		text-decoration: none;
 	}
 }

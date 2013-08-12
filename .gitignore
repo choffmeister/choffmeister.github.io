@@ -4,11 +4,7 @@ _site/
 # bower components
 bower_components/
 
-# node modules
-node_modules/
+# OS specific trash
+.DS_Store
+Thumbs.db
 
-# compiled less
-*.css
-
-# copied roboto font face
-assets/fonts/

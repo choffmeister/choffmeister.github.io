@@ -10,6 +10,6 @@
   ],
   "dependencies": {
     "bootstrap": "~3.0.0-rc1",
-    "roboto-fontface": "~0.1.1"
+    "roboto-fontface": "~0.1.2"
   }
 }

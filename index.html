@@ -7,9 +7,13 @@ title: Home
 	<div class="posts">
 		{% for post in site.posts %}
 		<div class="post">
-			<div class="date">{{ post.date | date_to_string }}</div>
-			<div class="content">{{ post.content | strip_html | truncate: 400 }}</div>
-			<div class="readfull"><a href="{{ post.url }}">Read full post...</a></div>
+			<div class="head clearfix">
+				<a href="{{ post.url }}"><strong class="title pull-left">{{ post.title }}</strong></a>
+				<em class="date pull-right">{{ post.date | date_to_string }}</em>
+			</div>
+			<div class="content">
+				{{ post.content | strip_html | truncate: 400 }}
+			</div>
 		</div>
 		{% endfor %}
 	</div>

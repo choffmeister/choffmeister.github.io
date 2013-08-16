@@ -76,7 +76,7 @@ if [[ $PROXY_HTTP ]]; then
 	echo "Acquire::http::Proxy \"$PROXY_HTTP\";" >> /etc/apt/apt.conf.d/01proxy
 	export http_proxy=$PROXY_HTTP
 fi
-if [[ $PROXY_HTTP ]]; then
+if [[ $PROXY_HTTPS ]]; then
 	echo "Acquire::https::Proxy \"$PROXY_HTTPS\";" >> /etc/apt/apt.conf.d/01proxy
 	export https_proxy=$PROXY_HTTPS
 fi

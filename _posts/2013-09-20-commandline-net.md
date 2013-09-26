@@ -7,7 +7,7 @@ categories: csharp
 
 In the last time I often build command-line tools with C# that needed some parsing of the command-line arguments passed in. Often I just have done simple comparison of strings to detect the arguments. Since doing everything the same incomplete crap is bad, I build a simple library called DotArguments to handle that stuff. It allows defining the arguments, types etc via a simple POCO argument container class with some attributes.
 
-The library is heavily unit tested and rock solid. It can be found at [DotArguments](https://github.com/choffmeister/DotArguments) and licensed under the permissive MIT license. Feel free to use it or contribute. My next plan is to implement some simple code, to generate usage instructions from the POCO argument container.
+The library is heavily unit tested and rock solid. It comes with a GNU compliant parser. It can be found at [DotArguments](https://github.com/choffmeister/DotArguments) and licensed under the permissive MIT license. Feel free to use it or contribute.
 
 You can easily install the package via [NuGet](http://www.nuget.org/packages/DotArguments/).
 
@@ -50,13 +50,14 @@ namespace DotArgumentsDemo
     {
         public static void Main(string[] args)
         {
-            // create container definition
+            // create container definition and the parser
             ArgumentDefinition definition = new ArgumentDefinition(typeof(DemoArguments));
+            GNUArgumentParser parser = new GNUArgumentParser();
 
             try
             {
                 // create object with the populated arguments
-                DemoArguments arguments = definition.Parse<DemoArguments>(args);
+                DemoArguments arguments = parser.Parse<DemoArguments>(definition, args);
 
                 Console.WriteLine("InputPath: {0}", arguments.InputPath ?? "(null)");
                 Console.WriteLine("OutputPath: {0}", arguments.OutputPath ?? "(null)");
@@ -70,7 +71,7 @@ namespace DotArgumentsDemo
             catch (Exception ex)
             {
                 Console.Error.WriteLine(string.Format("error: {0}", ex.Message));
-                Console.Error.Write(string.Format("usage: {0}", definition.GenerateUsageString()));
+                Console.Error.Write(string.Format("usage: {0}", parser.GenerateUsageString(definition)));
 
                 Environment.Exit(1);
             }
@@ -81,8 +82,9 @@ namespace DotArgumentsDemo
 
 Here are some examples, how the application can be invoked and what values would be populated:
 
-```bash
-$ DotArguments.Demo.exe --age 10 --name tom input output
+```
+DotArguments.Demo.exe --age=10 -n tom input output
+
 InputPath: input
 OutputPath: output
 Name: tom
@@ -91,8 +93,9 @@ Verbose: False
 Remaining: []
 ```
 
-```bash
-$ DotArguments.Demo.exe --name tom output --age 10
+```
+DotArguments.Demo.exe --name=tom output --age=10
+
 InputPath: output
 OutputPath: (null)
 Name: tom
@@ -101,8 +104,9 @@ Verbose: False
 Remaining: []
 ```
 
-```bash
-$ DotArguments.Demo.exe input -v output additional1 additional2
+```
+DotArguments.Demo.exe input -v output additional1 additional2
+
 InputPath: input
 OutputPath: output
 Name: (null)
@@ -111,12 +115,27 @@ Verbose: True
 Remaining: [additional1,additional2]
 ```
 
-Are invocation with invalid arguments:
+And now some invocation with invalid arguments:
 
-```bash
+```
 DotArguments.Demo.exe
-error: Mandatory argument at position 0 is missing
-usage: DotArguments.Demo.exe [options] inputpath [outputpath] [...]
+
+error: Mandatory argument inputpath missing
+usage: DotArguments.Demo.exe [options] [--] inputpath [outputpath] [...]
+
+  inputpath          the input path
+  outputpath         the output path
+
+  --age              the age
+  -n, --name         the name
+  -v, --verbose      enable verbose console output
+```
+
+```
+DotArguments.Demo.exe input --age=test
+
+error: Argument age cannot take value test
+usage: DotArguments.Demo.exe [options] [--] inputpath [outputpath] [...]
 
   inputpath          the input path
   outputpath         the output path

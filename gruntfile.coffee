@@ -192,6 +192,6 @@ module.exports = (grunt) ->
   blog(grunt)
 
   grunt.registerTask "dev-build", ["clean:dev", "coffee:dev", "blogposts:dev", "blogpages:dev", "less:dev", "copy:dev"]
-  grunt.registerTask "prod-build", ["dev-build", "clean:prod", "blogposts:dev", "blogpages:prod", "less:prod", "copy:prod", "requirejs:prod"]
+  grunt.registerTask "prod-build", ["dev-build", "clean:prod", "blogposts:prod", "blogpages:prod", "less:prod", "copy:prod", "requirejs:prod"]
   grunt.registerTask "dev-server", ["dev-build", "connect:dev"]
   grunt.registerTask "default", ["dev-server", "watch"]

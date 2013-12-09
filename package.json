@@ -13,6 +13,7 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-open": "~0.2.2",
+    "jade": "~0.35.0",
     "marked": "~0.2.10",
     "matchdep": "~0.3.0",
     "send": "~0.1.4"

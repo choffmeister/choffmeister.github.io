@@ -21,10 +21,24 @@ module.exports = (grunt) ->
     blog:
       dev:
         expand: true
-        cwd: "posts"
-        src: ["**/*.jade"]
-        dest: "#{targetDev}/posts"
+        src: ["resources/**/*.jade", "posts/**/*.jade"]
+        dest: "#{targetDev}"
         ext: ".html"
+        rename: (dest, src) ->
+          path.join dest, (if src is "resources/index.html" then "index.html" else src)
+        options:
+          withDrafts: true
+          pretty: true
+      prod:
+        expand: true
+        src: ["resources/**/*.jade", "posts/**/*.jade"]
+        dest: "#{targetProd}"
+        ext: ".html"
+        rename: (dest, src) ->
+          path.join dest, (if src is "resources/index.html" then "index.html" else src)
+        options:
+          withDrafts: false
+          pretty: false
 
     coffee:
       dev:
@@ -144,9 +158,9 @@ module.exports = (grunt) ->
         files: ["src/**/*.coffee"]
         tasks: ["coffee:dev"]
 
-      jade:
+      blog:
         files: ["resources/**/*.jade", "posts/**/*.jade"]
-        tasks: ["jade:dev"]
+        tasks: ["blog:dev"]
 
       less:
         files: ["resources/styles/**/*.less"]
@@ -163,7 +177,7 @@ module.exports = (grunt) ->
   require("matchdep").filterDev("grunt-*").forEach grunt.loadNpmTasks
   blog(grunt)
 
-  grunt.registerTask "dev-build", ["clean:dev", "coffee:dev", "jade:dev", "less:dev", "copy:dev"]
-  grunt.registerTask "prod-build", ["dev-build", "clean:prod", "copy:prod", "requirejs:prod", "jade:prod", "less:prod"]
+  grunt.registerTask "dev-build", ["clean:dev", "coffee:dev", "blog:dev", "less:dev", "copy:dev"]
+  grunt.registerTask "prod-build", ["dev-build", "clean:prod", "blog:prod", "copy:prod", "requirejs:prod", "less:prod"]
   grunt.registerTask "dev-server", ["dev-build", "connect:dev"]
   grunt.registerTask "default", ["dev-server", "watch"]

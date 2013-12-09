@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Explicitly disable rewriting for api routes
+	RewriteRule ^api/ - [L]
+
+	# Disable rewriting for requests to existing files
+	RewriteCond %{REQUEST_FILENAME} !-f
+
+	RewriteRule ^(.*)$ index.html [QSA,L]
+</IfModule>

@@ -1,0 +1,15 @@
+{
+  "name": "choffmeister-blog",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "jquery": "~2.0.3",
+    "requirejs": "~2.1.9",
+    "roboto-fontface": "~0.1.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}

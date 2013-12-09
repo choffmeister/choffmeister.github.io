@@ -1,0 +1,46 @@
+.unreactive-links() {
+    a, a:hover, a:focus, a:active, a:visited {
+        outline: none;
+        text-decoration: none;
+    }
+}
+
+.border-radius(@radius) {
+    .border-top-radius(@radius);
+    .border-right-radius(@radius);
+    .border-bottom-radius(@radius);
+    .border-left-radius(@radius);
+}
+
+.transition(@def1) {
+    -webkit-transition: @def1;
+    -moz-transition: @def1;
+    -ms-transition: @def1;
+    -o-transition: @def1;
+    transition: @def1;
+}
+
+.transition(@def1, @def2) {
+    -webkit-transition: @def1, @def2;
+    -moz-transition: @def1, @def2;
+    -ms-transition: @def1, @def2;
+    -o-transition: @def1, @def2;
+    transition: @def1, @def2;
+}
+
+.transition(@def1, @def2, @def3) {
+    -webkit-transition: @def1, @def2, @def3;
+    -moz-transition: @def1, @def2, @def3;
+    -ms-transition: @def1, @def2, @def3;
+    -o-transition: @def1, @def2, @def3;
+    transition: @def1, @def2, @def3;
+}
+
+.fullscreen(@z-index) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: @z-index;
+}

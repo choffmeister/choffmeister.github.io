@@ -1,0 +1,80 @@
+@import "../../bower_components/roboto-fontface/roboto-fontface.less";
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+@import "./mixins.less";
+@import "./variables.less";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+// Wrapper for page content to push down footer
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    // Negative indent footer by its height
+    margin: 0 auto -@footer-height auto;
+    // Pad bottom by footer height
+    padding: 0 0 @footer-height 0;
+}
+
+header {
+    display: block;
+    font-weight: 300;
+}
+
+body {
+    padding-top: 50px;
+}
+
+footer {
+    .unreactive-links();
+
+    display: block;
+    height: @footer-height;
+    padding-top: 20px;
+    overflow: hidden;
+    font-weight: 300;
+
+    border-top: 1px solid @hr-border;
+}
+
+nav {
+    & > ul {
+        .clearfix;
+
+        list-style: none;
+        margin: 23px 0 0 0;
+        padding: 0;
+
+        & > li {
+            float: left;
+            margin-left: 1em;
+        }
+    }
+}
+
+#brand {
+    color: black;
+    font-size: 36px;
+    font-weight: 100;
+}
+
+* {
+    font-weight: 300;
+}
+
+#content {
+    margin-top: @content-margin;
+    margin-bottom: @content-margin;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+p > img {
+    width: 100%;
+}

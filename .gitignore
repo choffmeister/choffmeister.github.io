@@ -1,0 +1,9 @@
+# NPM stuff
+node_modules/
+npm_debug.log
+
+# Bower stuff
+bower_components/
+
+# build target
+target/

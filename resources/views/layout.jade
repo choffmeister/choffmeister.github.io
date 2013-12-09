@@ -1,0 +1,19 @@
+doctype 5
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+        title assert:hub
+        link(rel="stylesheet", href="/styles/main.css")
+        script(data-main="/src/app", src="/bower_components/requirejs/require.js", async)
+    body
+        div#wrap
+            header.clearfix
+                div.container
+                    include ../partials/header
+            div.clearfix
+                section#content.container
+                    block content
+        footer.clearfix
+            div.container
+                include ../partials/footer

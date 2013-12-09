@@ -1,8 +1,6 @@
 title: "Retinaize an application"
 publishDate: "2013-08-12"
 
-# Retinaize an application
-
 If you have a Mac Book Pro with Retina display, you may stumble upon useful apps, that are not Retina ready by now. You can change this manually. Note, that this trick only works for the default Cocoa widgets. Custom GUI elements may remain non high definition.
 
 To "upgrade" an application, open up a terminal and navigate to your Applications folder. Then use a terminal editor (I prefer vim):

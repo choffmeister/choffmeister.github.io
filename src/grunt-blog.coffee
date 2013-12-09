@@ -64,8 +64,17 @@ module.exports = (grunt) ->
         markdown = grunt.file.read(p.src)
         rendered = marked(markdown, _.extend({}, options))
 
-        if rendered.length > 0
-          grunt.file.write(p.dest, rendered)
+        template = """
+extends ../resources/views/post
+
+block postcontent
+  div.
+#{_.map(rendered.match(/^.*([\n\r]+|$)/gm), (l) -> "    " + l).join("")}
+"""
+        rendered2 = jade.render(template, _.extend({}, options, { filename: p.src, post: p }))
+
+        if rendered2.length > 0
+          grunt.file.write(p.dest, rendered2)
           grunt.log.writeln("File '#{p.dest}' created.");
         else
           grunt.log.warn("Destination not written because compiled files were empty.")

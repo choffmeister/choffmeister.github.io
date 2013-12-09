@@ -173,7 +173,7 @@ module.exports = (grunt) ->
         tasks: ["coffee:dev"]
 
       blog:
-        files: ["posts/**/*.md", "pages/**/*.jade"]
+        files: ["posts/**/*.md", "pages/**/*.jade", "resources/views/**/*.jade"]
         tasks: ["blogposts:dev", "blogpages:dev"]
 
       less:

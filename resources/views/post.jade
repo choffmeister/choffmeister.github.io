@@ -1,0 +1,7 @@
+extends ./layout
+
+block content
+    div.page-header
+        h1 #{post.title} <small style="white-space: nowrap;">#{formatIsoDate(post.publishDate)}</small>
+
+    block postcontent

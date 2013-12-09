@@ -1,7 +1,13 @@
 module.exports = (grunt) ->
+  # libraries
   _ = grunt.util._
-  jade = require('jade')
+  jade = require("jade")
+  marked = require("marked")
 
+  # state
+  posts = null
+
+  # render a template with jade
   render = (src, dest, options) ->
     try
       template = grunt.file.read(src)
@@ -16,18 +22,8 @@ module.exports = (grunt) ->
       grunt.log.error(e)
       grunt.fail.warn("Jade failed to compile '#{src}'.")
 
-  # Please see the Grunt documentation for more information regarding task
-  # creation: http://gruntjs.com/creating-tasks
-  grunt.registerMultiTask "blog", "", ->
-    # Merge task-specific and/or target-specific options with these defaults.
-    options = @options(
-      withDrafts: false
-      pretty: false
-    )
-
-    viewsAndPosts =
-
-    base = _.chain(@files)
+  listFiles = (files) ->
+    _.chain(files)
       .map((f) -> {
         src: f.src[0]
         dest: f.dest
@@ -43,22 +39,62 @@ module.exports = (grunt) ->
       )
       .value()
 
-    views = _.chain(base)
-      .filter((f) -> not f.src.match(/^posts\//)?)
-      .value()
+  grunt.registerMultiTask "blogposts", "", ->
+    # merge task-specific and/or target-specific options with these defaults.
+    options = @options(
+      withDrafts: false
+      pretty: false
+    )
 
-    posts = _.chain(base)
-      .filter((f) -> f.src.match(/^posts\//)? and (options.withDrafts or f.name[0] != "_"))
+    posts = _.chain(listFiles(@files))
+      .filter((f) -> options.withDrafts or f.name[0] != "_")
       .map((f) ->
         content = grunt.file.read(f.src)
         _.extend({}, f, {
-          title: content.match(/^title = "(.*)"$/m)[1]
-          publishDate: content.match(/^publish_date = "(.*)"$/m)[1]
+          title: content.match(/^title: "(.*)"$/m)[1]
+          publishDate: content.match(/^publishDate: "(.*)"$/m)[1]
         })
       )
       .sortBy((p) -> p.publishDate)
       .reverse()
       .value()
 
-    _.each(posts, (p) -> render(p.src, p.dest, _.extend({}, options, { filename: p.src, post: p })))
-    _.each(views, (v) -> render(v.src, v.dest, _.extend({}, options, { filename: v.src, posts: posts })))
+    _.each(posts, (p) ->
+      try
+        markdown = grunt.file.read(p.src)
+        rendered = marked(markdown, _.extend({}, options))
+
+        if rendered.length > 0
+          grunt.file.write(p.dest, rendered)
+          grunt.log.writeln("File '#{p.dest}' created.");
+        else
+          grunt.log.warn("Destination not written because compiled files were empty.")
+      catch e
+        grunt.log.error(e)
+        grunt.fail.warn("Failed to compile '#{p.src}'.")
+    )
+
+  grunt.registerMultiTask "blogpages", "", ->
+    throw new Error("You must run task 'blogposts' before running task 'blogpages'.") if posts is null
+
+    # merge task-specific and/or target-specific options with these defaults.
+    options = @options(
+      withDrafts: false
+      pretty: false
+    )
+
+    pages = listFiles(@files)
+    _.each(pages, (p) ->
+      try
+        template = grunt.file.read(p.src)
+        rendered = jade.render(template, _.extend({}, options, { filename: p.src, posts: posts }))
+
+        if rendered.length > 0
+          grunt.file.write(p.dest, rendered)
+          grunt.log.writeln("File '#{p.dest}' created.");
+        else
+          grunt.log.warn("Destination not written because compiled files were empty.")
+      catch e
+        grunt.log.error(e)
+        grunt.fail.warn("Failed to compile '#{p.src}'.")
+    )

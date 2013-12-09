@@ -2,6 +2,9 @@ extends ../resources/views/layout
 
 block content
     each post in posts
-        p
-            span.pull-right #{formatIsoDate(post.publishDate)}
-            a(href="#{post.url}") #{post.title}
+        div.post
+            div.post-header
+                div.post-publishdate #{formatIsoDate(post.publishDate)}
+                div.post-title
+                    a(href="#{post.url}") #{post.title}
+            div.abstract #{post.abstract}

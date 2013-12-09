@@ -1,6 +1,7 @@
 module.exports = (grunt) ->
   # libraries
   _ = grunt.util._
+  yaml = require("js-yaml")
   jade = require("jade")
   marked = require("marked")
 
@@ -22,6 +23,12 @@ module.exports = (grunt) ->
       grunt.log.error(e)
       grunt.fail.warn("Jade failed to compile '#{src}'.")
 
+  # splits a string into an array of lines (the elements do not contain the line endings)
+  splitLines = (str) ->
+    normalized = str.replace("\r\n", "\n").replace("\r", "\n")
+    _.filter(normalized.split("\n"), (l) -> l != "\n")
+
+  # filters files to existent ones and adds some additional information
   listFiles = (files) ->
     _.chain(files)
       .map((f) -> {
@@ -39,6 +46,14 @@ module.exports = (grunt) ->
       )
       .value()
 
+  postTemplate = (rawContent) -> """
+extends ../resources/views/post
+
+block postcontent
+  div.
+#{_.map(splitLines(rawContent), (l) -> "    " + l).join("\n")}
+"""
+
   grunt.registerMultiTask "blogposts", "", ->
     # merge task-specific and/or target-specific options with these defaults.
     options = @options(
@@ -49,10 +64,19 @@ module.exports = (grunt) ->
     posts = _.chain(listFiles(@files))
       .filter((f) -> options.withDrafts or f.name[0] != "_")
       .map((f) ->
-        content = grunt.file.read(f.src)
+        lines = splitLines(grunt.file.read(f.src))
+        splitIndex = lines.indexOf("")
+        throw new Error() if splitIndex < 0
+
+        meta = yaml.load(lines[0..splitIndex-1].join("\n"))
+        markdown = lines[splitIndex+1..].join("\n")
+
         _.extend({}, f, {
-          title: content.match(/^title: "(.*)"$/m)[1]
-          publishDate: content.match(/^publishDate: "(.*)"$/m)[1]
+          meta: meta,
+          markdown: markdown
+          title: meta.title
+          publishDate: meta.publishDate
+          abstract: meta.abstract
         })
       )
       .sortBy((p) -> p.publishDate)
@@ -61,17 +85,8 @@ module.exports = (grunt) ->
 
     _.each(posts, (p) ->
       try
-        markdown = grunt.file.read(p.src)
-        rendered = marked(markdown, _.extend({}, options))
-
-        template = """
-extends ../resources/views/post
-
-block postcontent
-  div.
-#{_.map(rendered.match(/^.*([\n\r]+|$)/gm), (l) -> "    " + l).join("")}
-"""
-        rendered2 = jade.render(template, _.extend({}, options, { filename: p.src, post: p }))
+        rendered = marked(p.markdown, _.extend({}, options))
+        rendered2 = jade.render(postTemplate(rendered), _.extend({}, options, { filename: p.src, post: p }))
 
         if rendered2.length > 0
           grunt.file.write(p.dest, rendered2)

@@ -1,0 +1,8 @@
+- var formatIsoDate = function(isoDateString) {
+-   var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+-   var match = isoDateString.match(/(\d{4})\-(\d{2})\-(\d{2})/);
+-   var year = parseInt(match[1], 10);
+-   var month = parseInt(match[2], 10);
+-   var day = parseInt(match[3], 10);
+-   return day + " " + monthNames[month - 1] + " " + year;
+- }

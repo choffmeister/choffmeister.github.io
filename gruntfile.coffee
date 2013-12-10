@@ -26,6 +26,8 @@ module.exports = (grunt) ->
         ext: ".html"
         options:
           withDrafts: true
+          useGist: false
+
       prod:
         expand: true
         src: ["posts/**/*.md"]
@@ -33,6 +35,17 @@ module.exports = (grunt) ->
         ext: ".html"
         options:
           withDrafts: false
+          useGist: true
+
+    blogpostsgistify:
+      prod:
+        expand: true
+        src: ["posts/**/*.md"]
+        dest: "#{targetProd}"
+        ext: ".html"
+        options:
+          withDrafts: false
+          accessToken: ""
 
     blogpages:
       dev:
@@ -192,6 +205,6 @@ module.exports = (grunt) ->
   blog(grunt)
 
   grunt.registerTask "dev-build", ["clean:dev", "coffee:dev", "blogposts:dev", "blogpages:dev", "less:dev", "copy:dev"]
-  grunt.registerTask "prod-build", ["dev-build", "clean:prod", "blogposts:prod", "blogpages:prod", "less:prod", "copy:prod", "requirejs:prod"]
+  grunt.registerTask "prod-build", ["clean:prod", "blogpostsgistify:prod", "blogposts:prod", "blogpages:prod", "less:prod", "copy:prod", "requirejs:prod"]
   grunt.registerTask "dev-server", ["dev-build", "connect:dev"]
   grunt.registerTask "default", ["dev-server", "watch"]

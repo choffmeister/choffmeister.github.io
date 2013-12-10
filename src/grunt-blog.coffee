@@ -53,11 +53,24 @@ module.exports = (grunt) ->
       .filter((f) -> options.withDrafts or f.name[0] != "_")
       .map((f) ->
         lines = splitLines(grunt.file.read(f.src))
-        splitIndex = lines.indexOf("")
-        throw new Error() if splitIndex < 0
 
-        meta = yaml.load(lines[0..splitIndex-1].join("\n"))
-        markdown = lines[splitIndex+1..].join("\n")
+        meta = {
+          title: f.name
+          publishDate: "1970-01-01"
+          abstract: "..."
+        }
+
+        if lines[0] == "---"
+          frontMatterEnd = lines.indexOf("---", 1)
+          throw new Error() if frontMatterEnd < 0
+
+          meta.raw = lines[1..frontMatterEnd-1].join("\n")
+          _.extend(meta, yaml.load(lines[1..frontMatterEnd-1].join("\n")))
+          markdown = lines[frontMatterEnd+1..].join("\n")
+        else
+          meta.raw = ""
+          markdown = lines.join("\n")
+
         markdownTokens = marked.lexer(markdown, _.extend({}, marked.defaults, options))
 
         _.extend({}, f, {
@@ -76,7 +89,7 @@ module.exports = (grunt) ->
   createOrEditGist = (gistId, files, options, callback) ->
     requestData =
       description: "Snippets for blog post at https://choffmeister.de/"
-      public: true
+      public: false
       files: files
     requestDataString = JSON.stringify(requestData, true, 4)
     requestOptions =
@@ -106,6 +119,14 @@ module.exports = (grunt) ->
     req.write(requestDataString)
     req.end();
 
+  gistifyRebuild = (meta, gistId, markdown) -> """
+---
+#{meta}
+gistId: "#{gistId}"
+---
+#{markdown}
+"""
+
   postTemplate = (rawContent) -> """
 extends ../resources/views/post
 
@@ -131,9 +152,11 @@ block postcontent
       if sourceCodes.length > 0
         createOrEditGist(p.meta.gistId, _.object(sourceCodes), options, (res, err) ->
           if not err?
-            postFileWithGistId = yaml.dump(_.extend({}, p.meta, { gistId: res.id })) + "\n" + p.markdown
-            grunt.file.write(p.src, postFileWithGistId)
-            grunt.log.writeln("Post '#{p.src}' gistifyed (#{if p.meta.gistId? then "updated" else "created"}).");
+            if not p.meta.gistId?
+              grunt.file.write(p.src, gistifyRebuild(p.meta.raw, res.id, p.markdown))
+              grunt.log.writeln("Post '#{p.src}' gistifyed (created).");
+            else
+              grunt.log.writeln("Post '#{p.src}' gistifyed (updated).");
             done() if --doneCount is 0
           else
             grunt.log.error(err)

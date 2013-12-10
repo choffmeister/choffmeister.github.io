@@ -1,6 +1,8 @@
+---
 title: "Activiti and Maven"
 publishDate: "2013-10-21"
-abstract: "Today I was playing around with Activiti and created a small Java application with Maven that runs the Activiti Engine on a demo business model..."
+abstract: Today I was playing around with Activiti and created a small Java application with Maven that runs the Activiti Engine on a demo business model...
+---
 
 Recently I was working on a .NET based tool to simulate business processes. Thanks to [BPMN 2.0](http://www.bpmb.de/images/BPMN2_0_Poster_EN.pdf) and its XML specification there is a widely adopted file format to exchange business process models between tools of different vendors. Today I was playing around with [Activiti](http://www.activiti.org/) and created a small Java application with Maven that runs the Activiti Engine on a demo business model. Assuming you have Java, Maven and GIT properly installed on your system, you can take this project as a starting point to try your own ideas with it.
 

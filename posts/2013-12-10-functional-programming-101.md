@@ -1,6 +1,8 @@
+---
 title: "Functional Programming 101"
 publishDate: "2013-12-10"
 abstract: "Functional programming is a big topic at the moment. In this post I will cover some basics of functional programming and give some motivations on why this could be useful for you. Many small code examples shall help to work through. These examples are writen in Scala, but they are so basic, that you will be able to understand them quickly."
+---
 
 In this post I want to give a short introduction to functional programming (FP). FP is quiet a big word at the moment and I want to take a little bit of it's mystic fog way. For showcasing code examples I will use [http://www.scala-lang.org/](Scala). So if you do not know Scala keep on reading, we will only need some basics which follow within this post. Note, that since I want to talk about FP I will skip all class definitions (but we can imagine all to happen in a big class).
 

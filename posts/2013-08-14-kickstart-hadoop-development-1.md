@@ -1,6 +1,8 @@
+---
 title: "Kickstart Hadoop development - Part 1"
 publishDate: "2013-08-14"
-abstract: "This post will show you have to get a super fast kickstart into development with Hadoop (1.2.1). We will use Vagrant (1.2.7) to supply a virtual Hadoop server machine..."
+abstract: This post will show you have to get a super fast kickstart into development with Hadoop (1.2.1). We will use Vagrant (1.2.7) to supply a virtual Hadoop server machine...
+---
 
 This post will show you have to get a super fast kickstart into development with [Hadoop](http://hadoop.apache.org/) (1.2.1). We will use [Vagrant](http://vagrantup.com/) (1.2.7) to supply a virtual Hadoop server machine. First of all visit the Vagrant homepage and install it on your system. In addition we need [VirtualBox](https://www.virtualbox.org/) (4.x) to actually run our VM.
 

@@ -2,6 +2,7 @@
 title: "Retinaize an application"
 publishDate: "2013-08-12"
 abstract: "If you have a Mac Book Pro with Retina display, you may stumble upon useful apps, that are not Retina ready by now. You can change this manually. Note, that this trick only works for the default Cocoa widgets. Custom GUI elements may remain non high definition..."
+gistId: "de1f22bfb449eb299058"
 ---
 
 If you have a Mac Book Pro with Retina display, you may stumble upon useful apps, that are not Retina ready by now. You can change this manually. Note, that this trick only works for the default Cocoa widgets. Custom GUI elements may remain non high definition.

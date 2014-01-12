@@ -1,2 +1,5 @@
 # jekyll build target
 _site/
+
+# bundler gem lock
+Gemfile.lock

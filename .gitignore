@@ -1,7 +1,7 @@
 # jekyll build target
 _site/
 
-# bundler gem lock
+# bundler
 Gemfile.lock
 
 # OS specific trash

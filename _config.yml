@@ -1,3 +1,10 @@
 name: blog choffmeister
 markdown: redcarpet
 pygments: true
+permalink: /posts/:year/:month/:day/:title.html
+
+googleanalytics:
+  id: UA-37878676-2
+  name: choffmeister.de
+disqus:
+  shortname: choffmeister

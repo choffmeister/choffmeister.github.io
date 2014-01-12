@@ -10,15 +10,15 @@ Recently I was working on a .NET based tool to simulate business processes. Than
 
 Open up a console window and execute the following commands:
 
-{% highlight bash %}
+```bash
 $ git clone https://github.com/choffmeister/activiti-demo.git
 $ cd activiti-demo
 $ mvn test
-{% endhighlight %}
+```
 
 Thats all. The unit test provided with the project creates a process engine, deploys a BPMN 2.0 XML into it, starts a process instance and completes the two manual tasks in it.
 
-{% highlight java %}
+```java
 package de.choffmeister.activitidemo;
 
 import java.util.List;
@@ -91,6 +91,6 @@ public class AppTest extends TestCase {
         assertEquals(0L, runtimeService.createProcessInstanceQuery().count());
     }
 }
-{% endhighlight %}
+```
 
 For simulations (thats what I was actually interested in) the process engine seems to be much to slow. By now I did not search the internet for this concern. But it might be worth a try, to investigate how suitable the Activiti Engine is for simulation purposes with some customizations...

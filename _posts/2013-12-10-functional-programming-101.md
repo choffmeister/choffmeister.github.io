@@ -14,7 +14,7 @@ So let's start with the mind of an old-school imperative programmer… To be hon
 
 For the code example I will use Scala. For those of you that already know Scala, just skipp this section, the rest: don't be scared, we will keep it simple.
 
-{% highlight scala %}
+```scala
 // define a new value (like a variable, but immutable, i.e. cannot be changed)
 val i = 123
 val s = "Hello World"
@@ -31,7 +31,7 @@ def takeFirst[T](p1: T, p2: T): T = {
   // the last statement of a function is automatically the return value
   p1
 }
-{% endhighlight %}
+```
 
 In total we have defined four things, two values and two function. But what precisely are the types of those?
 
@@ -46,15 +46,15 @@ The first two are easy, but the type of `concat` and `takeFirst` might look stra
 
 What is a function? In a mathematical sense, a function is a mapping between values of one type to value of another (or the same) type. In mathematics a function has no side effects and more over, only depends on its parameters and only has access to its parameters (which is even stronger than to be free of side effects). In this post lets assume, functions in programming have this restriction, too. A simple example might be the function, that tells us, if an integer is even.
 
-{% highlight scala %}
+```scala
 def even(i: Int): Boolean = {
   i % 2 == 0
 }
-{% endhighlight %}
+```
 
 First of all it is a function within our restrictive definition: It only accesses its single parameter `i` and returns a value, in this case `true` if `i` is even and `false` if `i` is odd. What else to tell about this, this is just a function right? Well yes, but on the other hand it can also be seen as data. Think of this function as a simple table that maps values from the left column to the values of the right column:
 
-{% highlight text %}
+```text
      0 , true
     +1 , false
     -1 , false
@@ -63,7 +63,7 @@ First of all it is a function within our restrictive definition: It only accesse
    ... , ...
 2^31-1 , false
  -2^31 , true
-{% endhighlight %}
+```
 
 Then we can throw away our `even` function and replace it with this table and the instruction, that `even(i)` can be received by looking up `i` in our table and take the value to it's right. This can be done with every function. Hence, you could just rewrite every program you have and replace the functions by tables. In the end you only have on last master function left which is the function that looks up values in the tables.
 
@@ -71,17 +71,17 @@ Then we can throw away our `even` function and replace it with this table and th
 
 What is data? In a computer program data is the content of a memory for which we have some kind of named pointer to that memory. Simple example again:
 
-{% highlight scala %}
+```scala
 val x = 123
-{% endhighlight %}
+```
 
 The value `123` is a 32-Bit integer that remains anywhere in memory and with the symbol `x` we have the named pointer that tells us where this place in memory is. But we can see data as a function to. Just replace variable `x` with a function of the same name that takes no parameters and always returns the same value:
 
-{% highlight scala %}
+```scala
 def x(): Int = {
   123
 }
-{% endhighlight %}
+```
 
 So in particular data is the most simple kind of function one can think of.
 
@@ -91,7 +91,7 @@ In total we have seen that functions and data are just two views on the same thi
 
 We have a list of integers and want to filter it by some criteria: We want to seperate the list into the sublist of even and the sublist of odd numbers. Let's to it the imperative style:
 
-{% highlight scala %}
+```scala
 // one line version of our even function
 def even(i: Int): Boolean = i % 2 == 0
 
@@ -128,13 +128,13 @@ val numbers = List(1,2,3,4,5,6,7,8,9,10)
 
 val evenNumbers = filterEven(numbers)
 val oddNumbers = filterOdd(numbers)
-{% endhighlight %}
+```
 
 Note how we used our `even` function. But also note, how we have code repetition: In both cases we create a new empty list, iterate over the `numbers` list, check a condition for every element and add it, if the condition is satisfied, to the new list. To avoid this kind of duplication we need something that is called a higher-order function, i.e. a function that gets at least on function as an parameter.
 
 Our ultimate goal is to filter an arbitrary list of integers by an arbitrary condition, called predicate. Think back to the short tour of scala at the beginning: what is the type that our predicate to filter Integer numbers must have? It must take an integer and return a boolean to indicate, whether the value should be kept or discarded. Hence the type must be `Int => Boolean`. The duplicated code we have can so be outsourced in a generic filter function like this:
 
-{% highlight scala %}
+```scala
 def filter(numbers: List[Int], predicate: Int => Boolean): List[Int] = {
   var result = List.empty[Int]
 
@@ -144,11 +144,11 @@ def filter(numbers: List[Int], predicate: Int => Boolean): List[Int] = {
 
   result
 }
-{% endhighlight %}
+```
 
 We have the exact same flow: Iterate over all elements and when the predicate matches for an element, add it to the result list. But this time we made the predicate a parameter that can be passed in. For good sake let's make the function generic to work with all kind lists:
 
-{% highlight scala %}
+```scala
 def filter[T](list: List[T], predicate: T => Boolean): List[T] = {
   var result = List.empty[T]
 
@@ -158,16 +158,16 @@ def filter[T](list: List[T], predicate: T => Boolean): List[T] = {
 
   result
 }
-{% endhighlight %}
+```
 
 Now filtering to odd and even numbers is simple:
 
-{% highlight scala %}
+```scala
 val numbers = List(1,2,3,4,5,6,7,8,9,10)
 
 // pass our even function as predicate
 val evenNumbers = filter(numbers, even)
-{% endhighlight %}
+```
 
 Now why does this work? Let's check the types:
 
@@ -181,23 +181,23 @@ The define a function to test if a number is even is ok, but often you do not wa
 
 The following two definitions are equivalent:
 
-{% highlight scala %}
+```scala
 // ordinary function definition
 def even(i: Int) = i % 2 == 0
 
 // a lambda expression assigned to a value
 val even = (i: Int) => i % 2 == 0
-{% endhighlight %}
+```
 
 This way we can write our example even shorter:
 
-{% highlight scala %}
+```scala
 val numbers = List(1,2,3,4,5,6,7,8,9,10)
 
 // pass a lambda expression as predicate
 val evenNumbers = filter(numbers, i => i % 2 == 0)
 val oddNumbers = filter(numbers, i => i % 2 != 0)
-{% endhighlight %}
+```
 
 ## Loose ends
 

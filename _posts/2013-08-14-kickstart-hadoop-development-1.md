@@ -10,7 +10,7 @@ This post will show you have to get a super fast kickstart into development with
 
 Done with that, create a new directory and create a new file called `Vagrantfile`. This will contain our configuration for the virtual machine that runs Hadoop.
 
-{% highlight ruby %}
+```ruby
 # Vagrantfile
 
 Vagrant.configure("2") do |config|
@@ -25,11 +25,11 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--cpus", "2"]
   end
 end
-{% endhighlight %}
+```
 
 We use Ubuntu LTS 12.04.2 x64 as operating system, 2 GB of RAM and 2 virtual CPU cores. The machine will be reachable under the IP 10.10.10.10 from our local machine. Now lets delegate the nifty work of creating and booting a VM to Vagrant by executing `vagrant up`. Vagrant will load the base image, configure the network and start the VM with VirtualBox. When Vagrant has finished you can SSH into the machine with `vagrant ssh`. Creating a secure shell to the VM by its private network IP 10.10.10.10 is possible, too, but by now we don't have a username/password to get access that way. So lets enter the VM with `vagrant ssh` and install Hadoop. For that I have create a single script that does all the work.
 
-{% highlight bash %}
+```bash
 # hadoop-install.sh
 
 #!/usr/bin/env bash
@@ -148,11 +148,11 @@ echo "============================================="
 
 # exit
 exit 0
-{% endhighlight %}
+```
 
 We just have to agree to the license of [Oracle Java 6](http://www.oracle.com/technetwork/java/index.html) (I could not find the way to bypass this single interactive step). Everything else is done by the script. The single steps are commentated as good as possible. Receive a copy of the script and execute it as root. Wait a while, accept the Java license and you are done. A fully working Hadoop server for your pocket. To ensure that everythings works as intended lets execute some test commands.
 
-{% highlight bash %}
+```bash
 # login with the hadoop user (password is hadoop)
 $ su hadoop
 $ cd
@@ -178,6 +178,6 @@ $ hadoop fs -cat wordcount-output/*
 # clean up
 $ hadoop fs -rm text-input
 $ hadoop fs -rmr wordcount-output
-{% endhighlight %}
+```
 
 That's it for now. In the next post we will create our first own Hadoop task with [Maven](http://maven.apache.org/) (yeah, another Apache project!).

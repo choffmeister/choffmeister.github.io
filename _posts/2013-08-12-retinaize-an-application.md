@@ -43,11 +43,11 @@ The following two picture show you the difference. I choose [MediaElch](http://w
 
 ## Result
 
-Here the original unimproved version ([full size](/images/mediaelch-original.png)):
+Here the original unimproved version (click on [full size](/assets/images/mediaelch-original.png) to really see the effect):
 
 ![MediaElch original](/assets/images/mediaelch-original.png)
 
-And now with our retina improvement ([full size](/images/mediaelch-retinaized.png)):
+And now with our retina improvement (click on [full size](/assets/images/mediaelch-retinaized.png) to really see the effect):
 
 ![MediaElch retinaized](/assets/images/mediaelch-retinaized.png)
 

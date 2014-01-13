@@ -3,12 +3,65 @@
 @import "./font.less";
 @import "./variables.less";
 
-body {
-    padding-top: 55px;
+header {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    h1 {
+        font-family: 'Open Sans';
+        text-transform: uppercase;
+    }
+
+    nav {
+        & > ul {
+            .clearfix();
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+
+            & > li {
+                display: inline-block;
+                margin: 0 1em;
+            }
+        }
+    }
 }
 
-p {
-    font-family: @font-family-serif;
+footer {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    & > ul {
+        .clearfix();
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+
+        & > li {
+            display: inline-block;
+            margin: 0 1em;
+        }
+    }
+}
+
+@media (min-width: 1200px){
+.container {
+width: 800px;
+}
+}
+@media (min-width: 992px){
+.container {
+width: 800px;
+}
+}
+@media (min-width: 768px){
+.container {
+width: 700px;
+}
 }
 
 #home .posts {

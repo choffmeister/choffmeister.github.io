@@ -8,3 +8,7 @@ googleanalytics:
   name: choffmeister.de
 disqus:
   shortname: choffmeister
+github:
+  username: choffmeister
+twitter:
+  username: thekwasti

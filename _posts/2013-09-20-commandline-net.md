@@ -14,7 +14,7 @@ You can easily install the package via [NuGet](http://www.nuget.org/packages/Dot
 
 ## Example
 
-```csharp
+~~~ csharp
 // DemoArguments.cs
 
 using System;
@@ -81,11 +81,11 @@ namespace DotArgumentsDemo
         }
     }
 }
-```
+~~~
 
 Here are some examples, how the application can be invoked and what values would be populated:
 
-```text
+~~~ text
 DotArguments.Demo.exe --age=10 -n tom input output
 
 InputPath: input
@@ -94,9 +94,9 @@ Name: tom
 Age: 10
 Verbose: False
 Remaining: []
-```
+~~~
 
-```text
+~~~ text
 DotArguments.Demo.exe --name=tom output --age=10
 
 InputPath: output
@@ -105,9 +105,9 @@ Name: tom
 Age: 10
 Verbose: False
 Remaining: []
-```
+~~~
 
-```text
+~~~ text
 DotArguments.Demo.exe input -v output additional1 additional2
 
 InputPath: input
@@ -116,11 +116,11 @@ Name: (null)
 Age: (null)
 Verbose: True
 Remaining: [additional1,additional2]
-```
+~~~
 
 And now some invocation with invalid arguments:
 
-```text
+~~~ text
 DotArguments.Demo.exe
 
 error: Mandatory argument inputpath missing
@@ -132,9 +132,9 @@ usage: DotArguments.Demo.exe [options] [--] inputpath [outputpath] [...]
   --age              the age
   -n, --name         the name
   -v, --verbose      enable verbose console output
-```
+~~~
 
-```text
+~~~ text
 DotArguments.Demo.exe input --age=test
 
 error: Argument age cannot take value test
@@ -146,4 +146,4 @@ usage: DotArguments.Demo.exe [options] [--] inputpath [outputpath] [...]
   --age              the age
   -n, --name         the name
   -v, --verbose      enable verbose console output
-```
+~~~

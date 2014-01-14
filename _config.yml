@@ -1,8 +1,10 @@
 name: choffmeister.de
+
 exclude: ['Gemfile', 'Makefile']
 permalink: /posts/:year/:month/:day/:title.html
 
-markdown: redcarpet
+markdown: kramdown
+markdown_ext: foo # to make jekyll ignore it's own markdown parser and use the custom one
 pygments: true
 
 googleanalytics:

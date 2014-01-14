@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'therubyracer'
 gem 'jekyll'
+gem 'kramdown'
+gem 'typogruby'
+gem 'therubyracer'
 gem 'less'

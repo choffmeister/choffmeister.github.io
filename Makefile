@@ -1,11 +1,14 @@
-build:
-	jekyll build
+build: clean
+	@jekyll build
 
-serve:
-	jekyll serve --watch --drafts
+serve: clean
+	@jekyll serve --watch --drafts
 
 deploy: build
-	rsync --progress -a --delete _site/ choffmeister@choffmeister.de:/var/www/choffmeister.de
+	@rsync --progress -a --delete _site/ choffmeister@choffmeister.de:/var/www/choffmeister.de
 
 bundle:
-	bundle install
+	@bundle install
+
+clean:
+	@rm -rf _site

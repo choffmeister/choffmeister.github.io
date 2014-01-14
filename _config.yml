@@ -1,7 +1,9 @@
 name: choffmeister.de
+exclude: ['Gemfile', 'Makefile']
+permalink: /posts/:year/:month/:day/:title.html
+
 markdown: redcarpet
 pygments: true
-permalink: /posts/:year/:month/:day/:title.html
 
 googleanalytics:
   id: UA-37878676-2

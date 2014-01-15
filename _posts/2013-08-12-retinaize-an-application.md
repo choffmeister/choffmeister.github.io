@@ -37,7 +37,7 @@ Mac OS seems to cache the Info.plist files. In order to force a reload just exec
 $ touch MyApplication.app
 ~~~
 
-This updates the last changed timestamp in the file system. Now just start the app and enjoy the new crisp interface (for most of the widgets).
+This updates the last changed timestamp in the file system. Now just start the application and enjoy the new crisp interface (for most of the widgets).
 
 The following two picture show you the difference. I choose [MediaElch](http://www.mediaelch.de/) as an example for a not Retina ready application.
 

@@ -8,11 +8,11 @@ abstract: "Functional programming is a big topic at the moment. In this post I w
 
 In this post I want to give a short introduction to functional programming (FP). FP is quiet a big word at the moment and I want to take a little bit of it's mystic fog way. For showcasing code examples I will use [http://www.scala-lang.org/](Scala). So if you do not know Scala keep on reading, we will only need some basics which follow within this post. Note, that since I want to talk about FP I will skip all class definitions (but we can imagine all to happen in a big class).
 
-So let's start with the mind of an old-school imperative programmer… To be honest, this should not be hard since almost all programmers started this way. In a classical imperative programm there are two types of objects: data and functions. Trivially as it sound, data is some value and functions are some instructions to "do something". Well, on the road to functional programming we must look a little bit deeper.
+So let's start with the mind of an old-school imperative programmer... To be honest, this should not be hard since almost all programmers started this way. In a classical imperative program there are two types of objects: data and functions. Trivially as it sound, data is some value and functions are some instructions to "do something". Well, on the road to functional programming we must look a little bit deeper.
 
 ## A short tour of Scala
 
-For the code example I will use Scala. For those of you that already know Scala, just skipp this section, the rest: don't be scared, we will keep it simple.
+For the code example I will use Scala. For those of you that already know Scala, just skip this section, the rest: don't be scared, we will keep it simple.
 
 ~~~ scala
 // define a new value (like a variable, but immutable, i.e. cannot be changed)
@@ -89,7 +89,7 @@ So in particular data is the most simple kind of function one can think of.
 
 In total we have seen that functions and data are just two views on the same thing. But if they are the same, why do many languages not allow to pass a function as a parameter to a function? Or another question: What benefit would we get from allowing this?
 
-We have a list of integers and want to filter it by some criteria: We want to seperate the list into the sublist of even and the sublist of odd numbers. Let's to it the imperative style:
+We have a list of integers and want to filter it by some criteria: We want to separate the list into the sublist of even and the sublist of odd numbers. Let's to it the imperative style:
 
 ~~~ scala
 // one line version of our even function
@@ -132,7 +132,7 @@ val oddNumbers = filterOdd(numbers)
 
 Note how we used our `even` function. But also note, how we have code repetition: In both cases we create a new empty list, iterate over the `numbers` list, check a condition for every element and add it, if the condition is satisfied, to the new list. To avoid this kind of duplication we need something that is called a higher-order function, i.e. a function that gets at least on function as an parameter.
 
-Our ultimate goal is to filter an arbitrary list of integers by an arbitrary condition, called predicate. Think back to the short tour of scala at the beginning: what is the type that our predicate to filter Integer numbers must have? It must take an integer and return a boolean to indicate, whether the value should be kept or discarded. Hence the type must be `Int => Boolean`. The duplicated code we have can so be outsourced in a generic filter function like this:
+Our ultimate goal is to filter an arbitrary list of integers by an arbitrary condition, called predicate. Think back to the short tour of Scala at the beginning: what is the type that our predicate to filter Integer numbers must have? It must take an integer and return a boolean to indicate, whether the value should be kept or discarded. Hence the type must be `Int => Boolean`. The duplicated code we have can so be outsourced in a generic filter function like this:
 
 ~~~ scala
 def filter(numbers: List[Int], predicate: Int => Boolean): List[Int] = {
@@ -177,7 +177,7 @@ Now why does this work? Let's check the types:
 
 So if we pass `numbers` as first parameter to `filter` then `T` must be `Int` in this case. Hence `predicate` must be of type `Int => Boolean` which is the case, too. All type match perfectly.
 
-The define a function to test if a number is even is ok, but often you do not want to choose names for function everytime. For this purpose there are lambda expressions in Scala. A lambda expression is just a short way to write function without name, called anonymous functions.
+The define a function to test if a number is even is OK, but often you do not want to choose names for function every time. For this purpose there are lambda expressions in Scala. A lambda expression is just a short way to write function without name, called anonymous functions.
 
 The following two definitions are equivalent:
 
@@ -201,4 +201,4 @@ val oddNumbers = filter(numbers, i => i % 2 != 0)
 
 ## Loose ends
 
-I hope I could give you a first insight into functional programming. There are still many topics uncovered like composibility and functional idiomatic (the filter function in this post is not very FP-like!). I plan to cover these things in another post soon.
+I hope I could give you a first insight into functional programming. There are still many topics uncovered like composability and functional idiomatic (the filter function in this post is not very FP-like!). I plan to cover these things in another post soon.

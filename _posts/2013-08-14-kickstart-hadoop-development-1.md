@@ -150,7 +150,7 @@ echo "============================================="
 exit 0
 ~~~
 
-We just have to agree to the license of [Oracle Java 6](http://www.oracle.com/technetwork/java/index.html) (I could not find the way to bypass this single interactive step). Everything else is done by the script. The single steps are commentated as good as possible. Receive a copy of the script and execute it as root. Wait a while, accept the Java license and you are done. A fully working Hadoop server for your pocket. To ensure that everythings works as intended lets execute some test commands.
+We just have to agree to the license of [Oracle Java 6](http://www.oracle.com/technetwork/java/index.html) (I could not find the way to bypass this single interactive step). Everything else is done by the script. The single steps are commentated as good as possible. Receive a copy of the script and execute it as root. Wait a while, accept the Java license and you are done. A fully working Hadoop server for your pocket. To ensure that everything works as intended lets execute some test commands.
 
 ~~~ bash
 # login with the hadoop user (password is hadoop)

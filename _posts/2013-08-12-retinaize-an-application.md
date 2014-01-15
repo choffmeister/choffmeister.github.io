@@ -43,12 +43,8 @@ The following two picture show you the difference. I choose [MediaElch](http://w
 
 ## Result
 
-Here the original unimproved version (click on [full size](/assets/images/mediaelch-original.png) to really see the effect):
+![MediaElch original](/assets/images/2013-08-12-retinaize-an-application/1.png)
 
-![MediaElch original](/assets/images/mediaelch-original.png)
+![MediaElch retinaized](/assets/images/2013-08-12-retinaize-an-application/2.png)
 
-And now with our retina improvement (click on [full size](/assets/images/mediaelch-retinaized.png) to really see the effect):
-
-![MediaElch retinaized](/assets/images/mediaelch-retinaized.png)
-
-As you can see, the standard widgets like text boxes and labels look crisp afterwards, but other elements like icons stay pixelated.
+As you can see, the standard widgets like text boxes and labels look crisp afterwards, but other elements like icons stay pixelated. To see the whole screenshots just look here: [original](/assets/images/2013-08-12-retinaize-an-application/mediaelch-original.png) and [retinaized](/assets/images/2013-08-12-retinaize-an-application/mediaelch-retinaized.png).

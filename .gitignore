@@ -1,9 +1,6 @@
 # jekyll build target
 _site/
 
-# bundler
-Gemfile.lock
-
 # OS specific trash
 .DS_Store
 ._.DS_Store

@@ -5,7 +5,7 @@ permalink: /posts/:year/:month/:day/:title.html
 
 markdown: kramdown
 markdown_ext: foo # to make jekyll ignore it's own markdown parser and use the custom one
-pygments: true
+highlighter: pygments
 
 googleanalytics:
   id: UA-37878676-2

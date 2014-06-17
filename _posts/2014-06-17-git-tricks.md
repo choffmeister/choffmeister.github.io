@@ -28,6 +28,42 @@ $ cd ..
 $ rm -rf myrepo.git
 ~~~
 
+### Change the author
+
+~~~ bash
+$ git filter-branch --commit-filter '
+    if [ "$GIT_COMMITTER_NAME" = "alexbeta" ];
+    then
+      GIT_COMMITTER_NAME="Alex Beta";
+      GIT_AUTHOR_NAME="Alex Beta";
+      GIT_COMMITTER_EMAIL="alex.beta@invalid.domain.tld";
+      GIT_AUTHOR_EMAIL="alex.beta@invalid.domain.tld";
+      git commit-tree "$@";
+    else
+      git commit-tree "$@";
+    fi' -- --all
+~~~
+
+### Remove certain files
+
+When there is the need to complete wipe some files from the repository history (for example because a secret file has been commited or to cleanup a converterted SVN repository) then the following commands can be used:
+
+~~~ bash
+# folder temp/
+$ git filter-branch \
+    --tree-filter 'rm -rf temp \;' \
+    --prune-empty \
+    --tag-name-filter cat \
+    -- --all
+
+# all files ending with .class extension
+$ git filter-branch \
+    --tree-filter 'find . -iname *.class -type f -exec rm {} \;' \
+    --prune-empty \
+    --tag-name-filter cat \
+    -- --all
+~~~
+
 ### To be continued...
 
 I will update this post from time to time when I again stumple upon some useful commands.

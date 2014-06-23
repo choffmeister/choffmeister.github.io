@@ -96,6 +96,14 @@ for BRANCH in `git for-each-ref refs/heads/ --format='%(refname:short)' | grep -
 done
 ~~~
 
+### Create a corresponding local branch for each remote branch
+
+~~~ bash
+#!/bin/bash
+for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do
+    git branch --track ${branch##*/} $branch
+done
+~~~
 
 ### To be continued...
 

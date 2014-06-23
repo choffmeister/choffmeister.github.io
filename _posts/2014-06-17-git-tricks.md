@@ -41,7 +41,9 @@ $ git filter-branch --commit-filter '
       git commit-tree "$@";
     else
       git commit-tree "$@";
-    fi' -- --all
+    fi' \
+    --tag-name-filter cat \
+    -- --all
 ~~~
 
 ### Remove certain files
@@ -63,6 +65,37 @@ $ git filter-branch \
     --tag-name-filter cat \
     -- --all
 ~~~
+
+### Drop all tags and recreate as non-annotated tags
+
+Once after migrating a CVS repository to GIT (with cvs2svn and then svn2git) I had some malformed annotated GIT tags that prevented me from cleaning up the history with `git filter-branch`. The following small shell script drops all tags and recreates them as lightweight non-annotated tags.
+
+~~~ bash
+#!/bin/bash
+for TAG in `git tag`; do
+    COMMIT=`git rev-list $TAG | head -n 1`
+
+    echo "Drop tag $TAG (commit $COMMIT) and recreate as non annotated tag"
+    git tag -d $TAG
+    git tag $TAG $COMMIT
+done
+~~~
+
+### Drop all branches and recreate as non-annotated tags
+
+Does almost the same as above, but starts with all (non master) branches.
+
+~~~ bash
+#!/bin/bash
+for BRANCH in `git for-each-ref refs/heads/ --format='%(refname:short)' | grep -v master`; do
+    COMMIT=`git rev-list $BRANCH | head -n 1`
+
+    echo "Drop branch $BRANCH (commit $COMMIT) and recreate as non annotated tag"
+    git branch -D $BRANCH
+    git tag $BRANCH $COMMIT
+done
+~~~
+
 
 ### To be continued...
 

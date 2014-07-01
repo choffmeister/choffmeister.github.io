@@ -105,6 +105,16 @@ for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do
 done
 ~~~
 
+### Generate changelog
+
+With the `git log` command one can easily generate change logs. The following command generates changlog entries in Markdown format for all non-merge commits between tag `v1.0` and `v1.1`:
+
+~~~ bash
+$ git log v1.0..v1.1 --no-merges --pretty='%s'
+~~~
+
+For more format options take a look at [GIT Pretty Formats](http://opensource.apple.com/source/Git/Git-19/src/git-htmldocs/pretty-formats.txt). The format can easily be adopted to whatever output you might need.
+
 ### To be continued...
 
 I will update this post from time to time when I again stumple upon some useful commands.

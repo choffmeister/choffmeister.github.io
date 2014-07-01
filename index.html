@@ -4,16 +4,16 @@ title: blog choffmeister
 ---
 
 <div id="home">
-    <ul class="posts">
-    {% for post in site.posts %}
-        <li>
-            <h6>
-                <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a>
-            </h6>
-            <P>
-                {{ post.abstract }}
-            </p>
-        </li>
-    {% endfor %}
-    </ul>
+  <ul class="posts">
+  {% for post in site.posts %}
+    <li>
+      <h6>
+        <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a>
+      </h6>
+      <P>
+        {{ post.abstract }}
+      </p>
+    </li>
+  {% endfor %}
+  </ul>
 </div>

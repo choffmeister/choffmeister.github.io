@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{{ page.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/assets/styles/main.css">
-    {% include mathjax.html %}
-    <link rel="alternate" type="application/rss+xml" title="choffmeister.de » Feed" href="http://choffmeister.de/feeds/posts.xml">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  {% include mathjax.html %}
+  <link rel="alternate" type="application/rss+xml" title="choffmeister.de » Feed" href="http://choffmeister.de/feeds/posts.xml">
 </head>
 <body>
-    {% include header.html %}
-    <section id="content" class="container">
-        {{ content }}
-    </section>
-    {% include footer.html %}
-    {% include googleanalytics.html %}
+  {% include header.html %}
+  <section id="content" class="container">
+      {{ content }}
+  </section>
+  {% include footer.html %}
+  {% include googleanalytics.html %}
 </body>
 </html>

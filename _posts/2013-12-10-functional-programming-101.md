@@ -6,7 +6,7 @@ categories: functional scala
 abstract: "Functional programming is a big topic at the moment. In this post I will cover some basics of functional programming and give some motivations on why this could be useful for you. Many small code examples shall help to work through. These examples are writen in Scala, but they are so basic, that you will be able to understand them quickly."
 ---
 
-In this post I want to give a short introduction to functional programming (FP). FP is quiet a big word at the moment and I want to take a little bit of it's mystic fog way. For showcasing code examples I will use [http://www.scala-lang.org/](Scala). So if you do not know Scala keep on reading, we will only need some basics which follow within this post. Note, that since I want to talk about FP I will skip all class definitions (but we can imagine all to happen in a big class).
+In this post I want to give a short introduction to functional programming (FP). FP is quiet a big word at the moment and I want to take a little bit of it's mystic fog way. For showcasing code examples I will use [Scala](http://www.scala-lang.org/). So if you do not know Scala keep on reading, we will only need some basics which follow within this post. Note, that since I want to talk about FP I will skip all class definitions (but we can imagine all to happen in a big class).
 
 So let's start with the mind of an old-school imperative programmer... To be honest, this should not be hard since almost all programmers started this way. In a classical imperative program there are two types of objects: data and functions. Trivially as it sound, data is some value and functions are some instructions to "do something". Well, on the road to functional programming we must look a little bit deeper.
 

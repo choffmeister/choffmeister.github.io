@@ -66,6 +66,8 @@ $ git filter-branch \
     -- --all
 ~~~
 
+The `filter-branch` command is really slow like over-night-job slow. I recommend using [BFG Repo-Cleaner](http://rtyley.github.io/bfg-repo-cleaner/) for history cleanup tasks because its easier to use and orders of magnitudes faster.
+
 ### Drop all tags and recreate as non-annotated tags
 
 Once after migrating a CVS repository to GIT (with cvs2svn and then svn2git) I had some malformed annotated GIT tags that prevented me from cleaning up the history with `git filter-branch`. The following small shell script drops all tags and recreates them as lightweight non-annotated tags.

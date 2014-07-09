@@ -7,12 +7,20 @@ markdown: kramdown
 markdown_ext: foo # to make jekyll ignore it's own markdown parser and use the custom one
 highlighter: pygments
 
+personal:
+  mail:
+    plain: hoffmeister@mailbox.org
+    encoded: hoffmeister (at) mailbox (dot) org
+  github:
+    username: choffmeister
+  twitter:
+    username: thekwasti
+  linkedin:
+    username: christian-hoffmeister
+    public: christian-hoffmeister/90/b01/571
+
 googleanalytics:
   id: UA-37878676-2
   name: choffmeister.de
 disqus:
   shortname: choffmeister
-github:
-  username: choffmeister
-twitter:
-  username: thekwasti

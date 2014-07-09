@@ -3,16 +3,17 @@ layout: default
 title: About
 ---
 
-<div id="photo"></div>
+<p>
+  <img src="/assets/images/photo.jpg" alt="Photo" class="img-thumbnail" width="256" height="256" />
+</p>
 
 <p>
   About me.... TODO
 </p>
 
 <p>
-  <div>GitHub: <a href="https://github.com/{{ site.github.username }}">choffmeister</a></div>
-  <div>Twitter: <a href="https://twitter.com/{{ site.twitter.username }}">@thekwasti</a></div>
-  <div>LinkedIn: <a href="http://de.linkedin.com/pub/christian-hoffmeister/90/b01/571/">christian-hoffmeister</a></div>
-  <div>Mail: <a href="mailto:hoffmeister(at)mailbox(dot)org">hoffmeister (at) mailbox (dot) org</a> [<a href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0xF39C1CAFCFC1D202">PGP</a>]</div>
+  <div>GitHub: <a id="github" href="https://github.com/{{ site.personal.github.username }}">{{ site.personal.github.username }}</a></div>
+  <div>Twitter: <a id="twitter" href="https://twitter.com/{{ site.personal.twitter.username }}">@{{ site.personal.twitter.username }}</a></div>
+  <div>LinkedIn: <a id="linkedin" href="http://de.linkedin.com/pub/{{ site.personal.linkedin.public }}">{{ site.personal.linkedin.username }}</a></div>
+  <div>Mail: {{ site.personal.mail.encoded }} [<a href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0xF39C1CAFCFC1D202">PGP</a>]</div>
 </p>
-

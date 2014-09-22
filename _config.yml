@@ -9,8 +9,8 @@ highlighter: pygments
 
 personal:
   mail:
-    plain: hoffmeister@mailbox.org
-    encoded: hoffmeister (at) mailbox (dot) org
+    plain: mail@choffmeister.de
+    encoded: mail (at) choffmeister (dot) de
   github:
     username: choffmeister
   twitter:

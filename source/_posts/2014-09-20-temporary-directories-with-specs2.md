@@ -4,6 +4,7 @@ title: "Clean and safe temporary directories with specs2"
 date: "2014-09-20 19:51:00"
 categories: scala specs2
 abstract: "A simple code snippet to simplify and harden the creation and usage of temporary directories with specs2."
+comments: true
 ---
 
 In some scenarios you might have to write tests against the real file system. In this case you almost always need a dedicated temporary directory for each single spec (since they might execute in parallel). This behavior can be factored out into a seperate object with ease. In addition it allows to make sure, that these temporary directory get properly cleaned up afterwards. The code looks like this:

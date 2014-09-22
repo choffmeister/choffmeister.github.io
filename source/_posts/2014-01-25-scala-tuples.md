@@ -4,6 +4,7 @@ title: "Scala tuples"
 date: "2014-01-25 11:01:00"
 categories: scala
 abstract: "Scalas tuples are much mure useful than the ones from C#/.NET. This article shows why."
+comments: true
 ---
 
 In Scala there are tuple types just like in C#. But in Scala tuples are part of the language while in C# tuples are part of the .NET library. Therefore Scalas tuple are more powerful and easy to use. Tuples are useful, if for example a function must return two ore more different values. In this case you have two options: Create a new simple data container type to encapsulate the different return values into one, or use generic tuples (which of course at compile time creates a new type, too). Especially in functional proramming these tuples are very help full. But when I programmed C# I refused to use them, because the naming is akward. A little example:

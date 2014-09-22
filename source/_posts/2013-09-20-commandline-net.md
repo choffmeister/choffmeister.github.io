@@ -4,6 +4,7 @@ title: "Parsing command-line arguments with C#"
 date: "2013-09-20 12:00:00"
 categories: csharp cli
 abstract: "In the last time I often build command-line tools with C# that needed some parsing of the command-line arguments passed in. Often I just have done simple comparison of strings to detect the arguments..."
+comments: true
 ---
 
 In the last time I often build command-line tools with C# that needed some parsing of the command-line arguments passed in. Often I just have done simple comparison of strings to detect the arguments. Since doing everything the same incomplete crap is bad, I build a simple library called DotArguments to handle that stuff. It allows defining the arguments, types etc via a simple POCO argument container class with some attributes.

@@ -4,6 +4,7 @@ title: "GIT tricks"
 date: "2014-06-17 19:30:12"
 categories: git
 abstract: "This is a small but useful collection of not so often needed git commands also acting as my personal memory aid."
+comments: true
 ---
 
 Git is a super powerful source code management system that allows to to pretty handy things. This posts is a list of some useful git commands that I use from time to time. But since I don't use them very often I always forget about them again. So this post also acts as my personal memory aid.

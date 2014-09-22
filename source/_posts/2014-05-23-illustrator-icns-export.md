@@ -4,6 +4,7 @@ title: "Export Apple ICNS icon file from Adobe Illustrator"
 date: "2014-05-23 23:21"
 categories: macosx
 abstract: "This post presents a small .jsx script for Adobe Illustrator (CS6) to directly export multiresolution ICNS icon file."
+comments: true
 ---
 
 When you develop an application for Mac OS X you need to supply an application icon in the Apple properitary ICNS icon format (see [here](http://en.wikipedia.org/wiki/Apple_Icon_Image_format)).

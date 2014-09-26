@@ -9,12 +9,10 @@ published: true
 
 Today I want to show you how to implement a purely reactive [Simple Mail Transfer Protocol](http://tools.ietf.org/html/rfc5321) server with [Akka](http://akka.io/). Of course at heart there will be actors involved and so, if you are not familiar with Akka and actors I suggest to go to [Akka's getting started guide](http://doc.akka.io/docs/akka/snapshot/intro/getting-started.html) first. The implementation we will dig in today is far away from beeing production ready. In particular things like Authentication, SSL/STARTTLS, Spamchecking and so on are out of scope of this article.
 
-So let's get into it. If you want to follow along you can clone my project from [GitHub](https://github.com/choffmeister/akka-smtpserver). First we need a working [SBT](http://www.scala-sbt.org/) project with Akka as dependency. So lets create a project and add Akka, [Logback](http://logback.qos.ch/) and [Typesafe Config](https://github.com/typesafehub/config):
+So let's get into it. If you want to follow along you can clone my project from [GitHub](https://github.com/choffmeister/akka-smtpserver). First we need a working [SBT](http://www.scala-sbt.org/) project with Akka as dependency. So lets create a project and add Akka:
 
 ``` scala build.sbt
 libraryDependencies ++= Seq(
-  "ch.qos.logback" % "logback-classic" % "1.0.13",
-  "com.typesafe" % "config" % "1.2.0",
   "com.typesafe.akka" %% "akka-actor" % "2.3.5",
   "com.typesafe.akka" %% "akka-slf4j" % "2.3.5"
 )

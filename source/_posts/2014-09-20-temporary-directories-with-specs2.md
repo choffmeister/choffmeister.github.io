@@ -28,7 +28,7 @@ object TempDirectory {
 
   /** Creates a new temporary directory and returns it's location. */
   def createTemporaryDirectory(suffix: String): File = {
-    val base = new File(new File(System.getProperty("java.io.tmpdir")), "gittimeshift")
+    val base = new File(new File(System.getProperty("java.io.tmpdir")), "my-prefix")
     val dir = new File(base, UUID.randomUUID().toString + suffix)
     dir.mkdirs()
     dir

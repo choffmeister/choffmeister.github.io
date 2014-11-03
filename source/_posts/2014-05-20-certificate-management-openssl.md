@@ -24,7 +24,7 @@ $ openssl req -new -key com.mydomain.key -out com.mydomain.csr
 Now pass the csr to for example [StartSSL](https://www.startssl.com/) and save the certificate to `com.mydomain.crt`. Create a file `ca.crt` containing all CA certificates concatenated. Bundle the key, the certificate and any needed (intermediate) CA certificates into a PKCS12 file:
 
 ``` bash
-openssl pkcs12 -export -in com.mydomain.crt -inkey com.mydomain.key -certfile ca.pem -certfile ca.crt -name "mydomain.com" -out com.mydomain.p12
+openssl pkcs12 -export -in com.mydomain.crt -inkey com.mydomain.key -certfile ca.pem -name "mydomain.com" -out com.mydomain.p12
 ```
 
 Now the `com.mydomain.p12` file contains all you need.

@@ -18,7 +18,7 @@ Generate the private key and a certificate sign request:
 
 ``` bash
 $ openssl genrsa -out com.mydomain.key 2048
-$ openssl req -new -key com.mydomain.key -out com.mydomain.csr
+$ openssl req -new -key com.mydomain.key -out com.mydomain.csr -sha256
 ```
 
 Now pass the csr to for example [StartSSL](https://www.startssl.com/) and save the certificate to `com.mydomain.crt`. Create a file `ca.crt` containing all CA certificates concatenated. Bundle the key, the certificate and any needed (intermediate) CA certificates into a PKCS12 file:

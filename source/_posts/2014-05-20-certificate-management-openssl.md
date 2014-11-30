@@ -57,10 +57,8 @@ domain=$1
 mkdir $domain
 cd $domain
 
-echo "Downloading CA and intermediate certificate..."
-wget --quiet http://www.startssl.com/certs/ca.pem
+echo "Downloading intermediate certificate..."
 wget --quiet http://www.startssl.com/certs/class1/sha2/pem/sub.class1.server.sha2.ca.pem
-cat ca.pem sub.class1.server.sha2.ca.pem > ca-chain.pem
 
 echo "Generate private key..."
 openssl genrsa -out $domain.key 2048
@@ -75,5 +73,5 @@ echo "* Save the certificate at $domain.crt"
 echo "Press any key when done..."
 
 echo "Create PKCS#12 container"
-openssl pkcs12 -export -in $domain.crt -inkey $domain.key -certfile ca-chain.pem -name "$domain" -out $domain.p12
+openssl pkcs12 -export -in $domain.crt -inkey $domain.key -certfile sub.class1.server.sha2.ca.pem -name "$domain" -out $domain.p12
 ```

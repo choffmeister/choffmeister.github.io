@@ -46,3 +46,33 @@ $ openssl pkcs12 -in $domain.p12 -out $domain.txt -nodes
 ```
 
 and then extract the single parts from the output file.
+
+# Script for StartSSL
+
+``` bash certificate.sh
+#!/bin/bash
+
+domain=$1
+mkdir $domain
+cd $domain
+
+echo "Downloading CA and intermediate certificate..."
+wget --quiet http://www.startssl.com/certs/ca.pem
+wget --quiet http://www.startssl.com/certs/class1/sha2/pem/sub.class1.server.sha2.ca.pem
+cat ca.pem sub.class1.server.sha2.ca.pem > ca-chain.pem
+
+echo "Generate private key..."
+openssl genrsa -out $domain.key 2048
+
+echo "Certificate sign request"
+openssl req -new -key $domain.key -out $domain.csr -sha256
+
+echo "Creating certificate..."
+echo "* Visit http://www.startssl.com/"
+echo "* Pass $domain.csr"
+echo "* Save the certificate at $domain.crt"
+echo "Press any key when done..."
+
+echo "Create PKCS#12 container"
+openssl pkcs12 -export -in $domain.crt -inkey $domain.key -certfile ca-chain.pem -name "$domain" -out $domain.p12
+```

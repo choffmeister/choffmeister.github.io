@@ -42,7 +42,8 @@ $ rm temp.pem
 To split the P12 file into its parts again just execute
 
 ``` bash
-$ openssl pkcs12 -in $domain.p12 -out $domain.txt -nodes
+$ openssl pkcs12 -in $domain.p12 -nodes -nokeys > $domain.crt
+$ openssl pkcs12 -in $domain.p12 -nodes -nocerts > $domain.key
 ```
 
 and then extract the single parts from the output file.

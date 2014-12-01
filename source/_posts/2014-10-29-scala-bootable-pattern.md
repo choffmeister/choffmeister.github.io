@@ -33,7 +33,7 @@ class BootableApp[T <: Bootable: Manifest] extends App {
 }
 ```
 
-There a some things to notice:
+There are some things to notice:
 
 1. `BootableApp` extends `App`, hence every object that extends `BootableApp` can act as valid entry point for your application.
 2. `T` must extend our `Bootable` type and there must be an implicitly `Manifest[T]` in scope, when extending `BootableApp`. That allows the instantiation of a new instance of type `T` from within `BootableApp` (given that `T` has a parameterless constructor).

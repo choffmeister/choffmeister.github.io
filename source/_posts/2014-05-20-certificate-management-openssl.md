@@ -39,7 +39,7 @@ $ openssl pkcs12 -export -in temp.pem -out $domain-2.p12
 $ rm temp.pem
 ```
 
-To split the P12 file into its parts again just execute
+To split the PKCS#12 container into its parts again just execute
 
 ``` bash
 $ openssl pkcs12 -in $domain.p12 -nodes -nokeys > $domain.crt
@@ -57,21 +57,21 @@ domain=$1
 mkdir $domain
 cd $domain
 
-echo "Downloading intermediate certificate..."
+echo "Download intermediate certificate..."
 wget --quiet http://www.startssl.com/certs/class1/sha2/pem/sub.class1.server.sha2.ca.pem
 
-echo "Generate private key..."
+echo "Create private key..."
 openssl genrsa -out $domain.key 2048
 
-echo "Certificate sign request"
+echo "Create certificate sign request..."
 openssl req -new -key $domain.key -out $domain.csr -sha256
 
-echo "Creating certificate..."
+echo "Create certificate..."
 echo "* Visit http://www.startssl.com/"
 echo "* Pass $domain.csr"
 echo "* Save the certificate at $domain.crt"
-echo "Press any key when done..."
+echo "* Press any key when done"
 
-echo "Create PKCS#12 container"
+echo "Create PKCS#12 container..."
 openssl pkcs12 -export -in $domain.crt -inkey $domain.key -certfile sub.class1.server.sha2.ca.pem -name "$domain" -out $domain.p12
 ```

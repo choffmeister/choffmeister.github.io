@@ -27,7 +27,7 @@ import scala.reflect.Manifest
 
 class BootableApp[T <: Bootable: Manifest] extends App {
   val manifest = implicitly[Manifest[T]]
-  val bootable = manifest.erasure.newInstance.asInstanceOf[T]
+  val bootable = manifest.runtimeClass.newInstance.asInstanceOf[T]
   sys.ShutdownHookThread(bootable.shutdown())
   bootable.startup()
 }

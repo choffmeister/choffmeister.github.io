@@ -6,7 +6,7 @@ comments: true
 categories: akka nodejs benchmark
 ---
 
-This post is about the two competitors [Akka](http://akka.io/) (akka-http respectively) and [NodeJS](http://nodejs.org/) and their abilitiy to scale. To create kind of a real word comparable benchmark, I have created the following scenario:
+This post is about the two competitors [Akka](http://akka.io/) (akka-http respectively) and [NodeJS](http://nodejs.org/) and their abilitiy to scale. To create kind of a real word comparable benchmark, I have created the following scenario (the sources can be found on [GitHub](https://github.com/choffmeister/akka-vs-node):
 
 * There is a MongoDB database containing 10,000 user records (each consisting out of an id, a name and a description string)
 * Both, akka-http and nodejs provide a single route `/api/user` where they create a query to MongoDB, that extracts randomly one user record and return it as JSON string

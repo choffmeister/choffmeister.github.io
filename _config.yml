@@ -10,6 +10,7 @@ url: "http://choffmeister.de" # the base hostname & protocol for your site
 twitter_username: thekwasti
 github_username:  choffmeister
 permalink: /posts/:year/:month/:day/:title.html
+googleanalytics_id: UA-37878676-2
 
 # Build settings
 markdown: kramdown

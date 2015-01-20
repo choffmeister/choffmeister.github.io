@@ -77,7 +77,9 @@ This is short: Planning to build a big REST application? Use Akka! It just scale
     chart1.setMargins(70, 30, 30, 60);
     chart1.addCategoryAxis("x", "Concurrency").addOrderRule(sort);
     chart1.addMeasureAxis("y", "RequestsPerSec");
-    chart1.addSeries("System", dimple.plot.line).addOrderRule(["akka", "node"], true);
+    var s = chart1.addSeries("System", dimple.plot.line)
+    s.addOrderRule(["akka", "node"], true);
+    s.lineMarkers = true;
     chart1.addLegend(60, 10, -80, 20, "right");
     chart1.draw();
 
@@ -85,7 +87,10 @@ This is short: Planning to build a big REST application? Use Akka! It just scale
     chart2.setMargins(70, 30, 30, 60);
     chart2.addCategoryAxis("x", "Concurrency").addOrderRule(sort);
     chart2.addMeasureAxis("y", "LatencyAvg");
-    chart2.addSeries("System", dimple.plot.line).addOrderRule(["akka", "node"], true);
+    var s = chart2.addSeries("System", dimple.plot.line)
+    s.addOrderRule(["akka", "node"], true);
+    s.lineMarkers = true;
+    console.log(s);
     chart2.addLegend(60, 10, -80, 20, "right");
     chart2.draw();
 
@@ -93,7 +98,9 @@ This is short: Planning to build a big REST application? Use Akka! It just scale
     chart3.setMargins(70, 30, 30, 60);
     chart3.addCategoryAxis("x", "Concurrency").addOrderRule(sort);
     chart3.addMeasureAxis("y", "Latency50");
-    chart3.addSeries("System", dimple.plot.line).addOrderRule(["akka", "node"], true);
+    var s = chart3.addSeries("System", dimple.plot.line)
+    s.addOrderRule(["akka", "node"], true);
+    s.lineMarkers = true;
     chart3.addLegend(60, 10, -80, 20, "right");
     chart3.draw();
 

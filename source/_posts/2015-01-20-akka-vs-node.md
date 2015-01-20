@@ -45,7 +45,7 @@ The response times are also a good metric to compare. The next graph shows the a
 
 <div id="chart2"></div>
 
-Having no concurrency both are really fast with response times below 5 milliseconds. Bringing concurrency in the average response time of Akka sky rockets up to around 45 milliseconds while NodeJS just raises a little bit. This shows Akka's needed overhead to manage real concurrent threads while NodeJS is just an event loop, hence single threaded. At an concurrency of 8 Akka's response time drop again by 50% (could have to do with the fact, that my MacBook has 4 cores with hyper threading). As concurrency goes up the response time of NodeJS raises proportionally. Akka again scales better until the point, where it beats NodeJS.
+Having no concurrency both are really fast with response times below 5 milliseconds. Bringing concurrency in the average response time of Akka "sky rockets" up to around 45 milliseconds while NodeJS just raises a little bit. This shows Akka's needed overhead to manage real concurrent threads while NodeJS is just an event loop, hence single threaded. At an concurrency of 8 Akka's response time drop again by 50% (could have to do with the fact, that my MacBook has 4 cores with hyper threading). As concurrency goes up the response time of NodeJS raises proportionally. Akka again scales better until the point, where it beats NodeJS.
 
 The last graph shows the 50%-quantile of the response times. That means, that is shows the response time in which 50% of all requests were handled:
 

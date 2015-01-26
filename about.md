@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+order: 1000
 ---
 
 # Impressum

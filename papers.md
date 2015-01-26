@@ -2,6 +2,7 @@
 layout: page
 title: Papers
 permalink: /papers/
+order: 900
 ---
 
 8 Nov 2012 &raquo; [Posets of twisted involutions in Coxeter groups](/papers/hoffmeister-posets-twisted-involutions-coxeter-groups.pdf)

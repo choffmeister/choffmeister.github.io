@@ -11,6 +11,12 @@ twitter_username: thekwasti
 github_username:  choffmeister
 permalink: /posts/:year/:month/:day/:title.html
 googleanalytics_id: UA-37878676-2
+about:
+  fullname: Christian Hoffmeister
+  street: Laufkötterweg 9c
+  postal: 22119
+  city: hamburg
+  email: webmaster@choffmeister.de
 
 # Build settings
 markdown: kramdown

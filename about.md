@@ -4,6 +4,14 @@ title: About
 permalink: /about/
 ---
 
-<img src="/images/photo.jpg" alt="Photo" width="256" height="256" />
+# Impressum
 
-TODO
+{{ site.about.fullname }}<br/>
+{{ site.about.street }}<br/>
+{{ site.about.postal }} {{ site.about.city }}<br/>
+
+E-Mail: <a href="mailto:{{ site.about.email }}">{{ site.about.email }}</a><br/>
+Internet: <a href="{{ site.url }}">{{ site.url }}</a><br/>
+
+_Haftungshinweis_: Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+

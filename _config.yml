@@ -20,3 +20,13 @@ about:
 
 # Build settings
 markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+# Deployment settings
+deployment:
+  type: rsync
+  host: choffmeister.de
+  user: choffmeister
+  directory: /var/www/de.choffmeister

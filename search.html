@@ -1,0 +1,17 @@
+---
+layout: default
+searchable: false
+---
+
+<div id="search">
+
+  <input id="search-box" type="text" placeholder="Enter your search here" class="form-control"/>
+  <ul id="search-results"></ul>
+
+  <script type="text/javascript" src="{{ '/js/jquery.min.js' | prepend: site.baseurl }}"></script>
+  <script type="text/javascript" src="{{ '/js/search.js' | prepend: site.baseurl }}"></script>
+  <script type="text/javascript">
+    SearchForm('{{ "/search.json" | prepend: site.baseurl }}', '#search-form', '#search-box', '#search-results');
+  </script>
+
+</div>

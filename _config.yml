@@ -30,3 +30,33 @@ deployment:
   host: choffmeister.de
   user: choffmeister
   directory: /var/www/de.choffmeister
+
+# Search index settings
+search:
+  host: localhost:9200
+  index:
+    name: choffmeister-blog
+    settings:
+      mappings:
+        page:
+          properties:
+            url:
+              type: string
+              analyzer: keyword
+            title:
+              type: string
+              analyzer: english
+            content:
+              type: string
+              analyzer: english
+        section:
+          properties:
+            url:
+              type: string
+              analyzer: keyword
+            title:
+              type: string
+              analyzer: english
+            content:
+              type: string
+              analyzer: english

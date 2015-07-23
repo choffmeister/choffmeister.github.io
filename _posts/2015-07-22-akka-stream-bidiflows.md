@@ -157,7 +157,7 @@ Tcp().outgoingConnection(new InetSocketAddress("irc.server.com", 6667))
 
 This wires everything up, starts the client and runs all the communication. The result value is a promise, that is completed as soon as the connection has been opened (you can also alter the future, to wait, until the whole communication has been finished).
 
-## Handeling ping messages
+## Handling ping messages
 
 How can we now handle ping messages. The [RFC-2812][rfc-2812] says that for every incoming `PING` message there has to be an outgoing `PONG` response. We can handle this all in a single `BidiFlow` and join it in without leaking anything out into the rest of the program:
 

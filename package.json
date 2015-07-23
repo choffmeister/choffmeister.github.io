@@ -1,0 +1,47 @@
+{
+  "name": "choffmeister-blog",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/.bin/gulp --dev",
+    "test": "node node_modules/.bin/gulp test",
+    "build": "node node_modules/.bin/gulp build",
+    "deploy": "node node_modules/.bin/gulp deploy"
+  },
+  "devDependencies": {
+    "connect": "3.3.5",
+    "del": "1.2.0",
+    "eslint": "0.24.1",
+    "font-awesome": "^4.3.0",
+    "gulp": "3.9.0",
+    "gulp-concat": "2.6.0",
+    "gulp-eslint": "0.13.2",
+    "gulp-front-matter": "1.2.3",
+    "gulp-if": "1.2.5",
+    "gulp-less": "3.0.3",
+    "gulp-livereload": "3.8.0",
+    "gulp-minify-html": "1.0.3",
+    "gulp-plumber": "1.0.1",
+    "gulp-rename": "1.2.2",
+    "gulp-size": "1.2.1",
+    "gulp-uglify": "1.2.0",
+    "gulp-util": "3.0.5",
+    "highlight.js": "8.6.0",
+    "js-yaml": "3.3.1",
+    "lodash": "3.10.0",
+    "marked": "0.3.3",
+    "merge-stream": "0.1.7",
+    "sanitize-html": "1.7.0",
+    "serve-static": "1.9.3",
+    "swig": "1.4.2",
+    "through2": "0.6.5",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0",
+    "yargs": "3.10.0"
+  },
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "d3": "3.5.6",
+    "dimple-js": "2.1.4",
+    "jquery": "2.1.4"
+  }
+}

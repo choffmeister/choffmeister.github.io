@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.data.title }}</title>
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <script type="text/javascript" src="/assets/scripts/main.js"></script>
+    {% if site.data.googleanalytics.id %}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ site.data.googleanalytics.id }}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {% endif %}
+  </head>
+  <body>
+    <header class="hero">
+      <a href="pages:index">choffmeister.de</a>
+    </header>
+    <div id="content" class="container">
+      %%content%%
+    </div>
+    <hr/>
+    <footer class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <ul>
+            <li>Christian Hoffmeister</li>
+            <li><a href="#" class="choffmeister-mail"></a></li>
+            <li><a href="pages:pages-about">Impressum</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul>
+            <li>
+              <i class="fa fa-github-square fa-1x"></i>
+              <a href="https://github.com/choffmeister">
+                <span class="username">choffmeister</span>
+              </a>
+            </li>
+            <li>
+              <i class="fa fa-twitter-square fa-1x"></i>
+              <a href="https://twitter.com/thekwasti">
+                <span class="username">thekwasti</span>
+              </a>
+            </li>
+            <li>
+              <i class="fa fa-linkedin-square fa-1x"></i>
+              <a href="https://de.linkedin.com/in/choffmeister">
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <i class="fa fa-xing-square fa-1x"></i>
+              <a href="https://www.xing.com/profile/Christian_Hoffmeister11">
+                <span>XING</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          This is a personal blog of mine where I will post about mostly technical things I stumble upon in my daily professional as well as personal life.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

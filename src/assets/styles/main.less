@@ -1,0 +1,47 @@
+@import "../../../node_modules/bootstrap/less/bootstrap";
+@import "../../../node_modules/font-awesome/less/font-awesome";
+@import (less) "../../../node_modules/highlight.js/styles/github.css";
+@import "variables";
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+
+  &:hover .anchor {
+    display: inline-block;
+  }
+
+  .anchor {
+    position: absolute;
+    display: none;
+
+    .header-link {
+      position: absolute;
+      right: 0;
+      padding: 0 10px;
+
+      &::before {
+        content: 'x';
+      }
+    }
+  }
+}
+
+.hero {
+  color: white;
+  text-color: gray;
+  padding: 10px;
+  text-align: center;
+
+  background-color: #6e83a7;
+  background-image: url(/assets/images/tiles.png);
+
+  a {
+    color: white;
+  }
+
+  border-bottom: 1px solid gray;
+}
+
+article {
+  font-family: @font-family-serif;
+}

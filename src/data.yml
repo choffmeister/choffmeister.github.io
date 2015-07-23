@@ -1,0 +1,8 @@
+title: choffmeister.de
+googleanalytics:
+  id: UA-37878676-2
+
+deployment:
+  host: choffmeister.de
+  user: choffmeister
+  directory: /var/www/de.choffmeister

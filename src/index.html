@@ -1,0 +1,8 @@
+---
+layout: base
+title: Homepage
+---
+{% for post in site.posts %}
+<h4><a href="posts:{{ post.frontMatter.key }}">{{ post.frontMatter.title }}</a></h4>
+<div>{{ post.frontMatter.date }}</div>
+{% endfor %}

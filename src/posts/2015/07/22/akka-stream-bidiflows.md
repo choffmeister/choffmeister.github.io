@@ -41,7 +41,7 @@ Now `logging` is a reusable `BidiFlow` that consumes and produces `ByteString`s 
 
 # Simple echo TCP client
 
-This is a simple TCP client that echos every chunk coming from the server back to server. In between we join in our logging `BidiFlow`, so that we can watch the data on the console.
+This is a simple TCP client that echos every chunk coming from the server back to the server. In between we join in our logging `BidiFlow`, so that we can watch the data on the console.
 
 ```scala
 // connect via TCP to google.de:80
@@ -56,7 +56,7 @@ Tcp().outgoingConnection(new InetSocketAddress("google.de", 80))
 
 # Writing an IRC client
 
-Writing an IRC client is a good way more complex then a simple echo client. But not to hard either, thanks to Akka's nice API.
+Writing an IRC client is a good way more complex than a simple echo client. But not to hard either, thanks to Akka's nice API.
 
 First let's start of with some (de)serialization code that allows us convert between the raw byte stream from the TCP stack and strongly typed classes representing the individual IRC commands:
 
@@ -101,7 +101,7 @@ OK, done (sure, there are more performant implementations for that). Now we impl
 * sending nick-, user- and realname to the server and
 * responding with a pong for every ping coming from the server.
 
-The basic IRC client with (de)serialization, logging and no sending but just listening to the server looks so:
+The basic IRC client with (de)serialization, logging and no sending but just listening to the server looks like this:
 
 ```scala
 /**
@@ -161,13 +161,13 @@ Tcp().outgoingConnection(new InetSocketAddress("irc.server.com", 6667))
 
 This wires everything up, starts the client and runs all the communication. The result value is a promise, that is completed with as soon as the connection has been opened (you can also alter the future, to wait, until the whole communication has been finished).
 
-## Handeling ping messages
+## Handling ping messages
 
-Who can we now handle ping messages. The [RFC-2812][rfc-2812] says that for every incoming `PING` message there has to be an outgoing `PONG` response. We can handle this all in a single `BidiFlow` and join it in without leaking anything out into the rest of the program:
+Who can we now handle ping messages. The [RFC-2812][rfc-2812] says that for every incoming `PING` message there has to be an outgoing `PONG` response. We can handle all this in a single `BidiFlow` and join it together without leaking anything out into the rest of the program:
 
-![Akka BidiFlow ping handlingx](images:akka-bidiflow-irc-ping-handling.png)
+![Akka BidiFlow ping handling](images:akka-bidiflow-irc-ping-handling.png)
 
-Well, that is complexer than the stuff we had before, but let's break it down:
+Well, that is more complex than the stuff we had before, but let's break it down:
 
 1. Every incoming message is duplicated in the "Broadcast" node and these duplications are splitted up into two indivual streams.
 2. One stream leads to a "Filter", that lets only non `PING` messages pass. These messages get send to the downstream.
@@ -176,7 +176,7 @@ Well, that is complexer than the stuff we had before, but let's break it down:
 
 Long story short: When joining in this BidiFlow, incoming `PING` messages are immediatly transformed to `PONG` messages and send back to the upstream. All other messages get normally passed downstream. All incoming upstream messages get normally passed upstream.
 
-To represent this in code, akka-stream as a beautiful and powerful API, to create such graphs. Take a look, who closely the sourcecode relates to the diagram shown:
+To represent this in code, akka-stream as a beautiful and powerful API, to create such graphs. Take a look, how closely the sourcecode relates to the diagram shown:
 
 ```scala
 import akka.stream.scaladsl._

@@ -82,12 +82,6 @@ figure.highlight .code,
   padding: 0.3em 15px 0.3em 1em;
   width: 100%;
 }
-figure.highlight .code pre,
-.codeblock .code pre {
-  max-width: calc(750px - 50px);
-  overflow-x: auto;
-  overflow-y: hidden;
-}
 figure.highlight .line,
 .codeblock .line {
   height: 1.3em;
@@ -134,6 +128,10 @@ code {
 .codeblock--tabbed figcaption .tab.active {
   background: #349ef3;
   color: white;
+}
+
+figure.highlight {
+  max-height: 500px;
 }
 
 figure.highlight, .codeblock {

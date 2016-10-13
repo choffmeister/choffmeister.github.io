@@ -70,7 +70,7 @@ theme: phantom
 deploy:
   type: rsync
   host: choffmeister.de
-  user: choffmeister
-  root: /var/www/de.choffmeister
+  user: root
+  root: /opt/nginx/choffmeister.de
   verbose: false
   port: 22

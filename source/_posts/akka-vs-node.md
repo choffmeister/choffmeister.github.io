@@ -56,6 +56,8 @@ We see: Even if NodeJS is better in average response time (for low/medium concur
 
 This is short: Planning to build a big REST application? Use Akka! It just scales way better and allows to use every single bit of computation power you have.
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dimple/2.2.0/dimple.latest.min.js"></script>
 <script type="text/javascript">
   var svg1 = dimple.newSvg("#chart1", '100%', 400);
   var svg2 = dimple.newSvg("#chart2", '100%', 400);
@@ -67,7 +69,7 @@ This is short: Planning to build a big REST application? Use Akka! It just scale
     return an < bn ? -1 : 1;
   };
 
-  d3.tsv("/assets/data/akka-vs-node.tsv", function (data) {
+  d3.tsv("/data/akka-vs-node.tsv", function (data) {
     data = dimple.filterData(data, "System", ["akka", "node"]);
 
     var chart1 = new dimple.chart(svg1, data);
